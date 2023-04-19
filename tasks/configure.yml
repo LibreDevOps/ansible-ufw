@@ -26,10 +26,9 @@
   tags:
     - ufw-configure-facts
 
-- name: configure | reset
+- name: configure | reset rules
   community.general.ufw:
     state: reset
-  when: configuration is changed
   tags:
     - ufw-configure-reset
 
