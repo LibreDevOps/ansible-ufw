@@ -11,6 +11,8 @@ ufw_rules:
     to_port: 22
     protocol: tcp
 
+ufw_install_state: present # absent or latest only if are supported
+
 # /etc/default/ufw
 ufw_etc_default_ipv6: true
 ufw_etc_default_default_input_policy: DROP
