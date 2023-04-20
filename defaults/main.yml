@@ -2,6 +2,11 @@
 ---
 ufw_logging: 'off'
 
+ufw_dependencies:
+  - ufw
+  - iproute2
+  - procps
+
 ufw_rules:
   - rule: allow
     interface: "{{ ansible_default_ipv4['interface'] }}"
