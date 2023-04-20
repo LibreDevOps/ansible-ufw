@@ -1,8 +1,5 @@
 # defaults file
 ---
-ufw_default_incoming_policy: deny
-ufw_default_outgoing_policy: allow
-
 ufw_logging: 'off'
 
 ufw_rules:
@@ -13,7 +10,9 @@ ufw_rules:
 
 ufw_install_state: present # absent or latest only if are supported
 
-# /etc/default/ufw
+# Path to the configuration file
+ufw_config_file: /etc/default/ufw
+
 ufw_etc_default_ipv6: true
 ufw_etc_default_default_input_policy: DROP
 ufw_etc_default_default_output_policy: ACCEPT

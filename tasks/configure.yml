@@ -19,14 +19,14 @@
     mode: 0644
   with_items:
     - src: etc/default/ufw.j2
-      dest: /etc/default/ufw
+      dest: "{{ ufw_config_file }}"
     - src: etc/ansible/facts.d/ufw.fact.j2
       dest: /etc/ansible/facts.d/ufw.fact
   register: configuration
   tags:
     - ufw-configure-facts
 
-- name: configure | reset rules
+- name: configure | reset config
   community.general.ufw:
     state: reset
   tags:
@@ -34,7 +34,7 @@
 
 - name: configure | default (incoming) policy
   community.general.ufw:
-    policy: "{{ ufw_default_incoming_policy }}"
+    policy: "{{ ufw_facts.default_incoming_policy }}"
     direction: incoming
   notify: reload ufw
   tags:
@@ -43,7 +43,7 @@
 
 - name: configure | default (outgoing) policy
   community.general.ufw:
-    policy: "{{ ufw_default_outgoing_policy }}"
+    policy: "{{ ufw_facts.default_outgoing_policy }}"
     direction: outgoing
   notify: reload ufw
   tags:

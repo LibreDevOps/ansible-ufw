@@ -6,7 +6,12 @@ ufw_dependencies:
   - procps
 
 ufw_facts:
-  default_incoming_policy: "{{ ufw_default_incoming_policy }}"
-  default_outgoing_policy: "{{ ufw_default_outgoing_policy }}"
+  default_incoming_policy: "{{ ufw_policies[ufw_etc_default_default_input_policy] }}"
+  default_outgoing_policy: "{{ ufw_policies[ufw_etc_default_default_output_policy] }}"
   logging: "{{ ufw_logging }}"
   rules: "{{ ufw_rules }}"
+
+ufw_policies:
+  DROP: deny
+  ACCEPT: allow
+  REJECT: reject
